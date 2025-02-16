@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Таймер с 29.12.2024 17:00 МСК</title>
+    <title>закрываемся.</title>
     <style>
         body {
             display: flex;
@@ -20,18 +20,30 @@
         }
         #timer {
             font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div id="timerLabel">ГЕССИНГ ЗАКРЫТ УЖЕ</div>
     <div id="timer"></div>
+    <button onclick="setTimerTommy()">А чё там Томми?</button>
+    <button onclick="setTimerGessing()">А чё там Гессинг?</button>
 
     <script>
-        function updateTimer() {
-            const targetDate = new Date('2024-12-29T17:00:00+03:00');
-            const now = new Date();
+        let isTommy = false;
 
+        function updateTimer() {
+            const targetDate = isTommy 
+                ? new Date('2025-02-15T23:26:00+04:00') 
+                : new Date('2024-12-29T17:00:00+03:00');
+            const now = new Date();
             let difference = now - targetDate;
 
             const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -43,6 +55,18 @@
             const seconds = Math.floor(difference / 1000);
 
             document.getElementById('timer').innerText = `${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд`;
+        }
+
+        function setTimerTommy() {
+            isTommy = true;
+            document.getElementById('timerLabel').innerText = 'СУДЬБА ПИЛОТОВ МОЛОДЁЖНЫХ ФОРМУЛ ЗАКРЫТА УЖЕ';
+            updateTimer();
+        }
+
+        function setTimerGessing() {
+            isTommy = false;
+            document.getElementById('timerLabel').innerText = 'ГЕССИНГ ЗАКРЫТ УЖЕ';
+            updateTimer();
         }
 
         setInterval(updateTimer, 1000);
