@@ -8,8 +8,8 @@ function updateTimer() {
             document.getElementById('timerLabel').innerText = 'СУДЬБА ПИЛОТОВ МОЛОДЁЖНЫХ ФОРМУЛ ЗАКРЫТА УЖЕ';
             break;
         case 'steve':
-            targetDate = new Date('2025-04-02T19:47:00+07:00'); // Кемеровское время UTC+7
-            document.getElementById('timerLabel').innerText = 'СТИВ СЛИЛСЯ СО СРАЧА УЖЕ:';
+            targetDate = new Date('2025-11-21T19:35:00+07:00');
+            document.getElementById('timerLabel').innerText = 'ФОРМУЛА ХУ ЗАКРЫТА УЖЕ:';
             break;
         default:
             targetDate = new Date('2024-12-29T17:00:00+03:00');
@@ -50,4 +50,4 @@ function toggleTheme() {
 }
 
 setInterval(updateTimer, 1000);
-updateTimer(); 
+updateTimer();

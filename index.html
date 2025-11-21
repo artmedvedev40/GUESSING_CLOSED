@@ -7,20 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="themeToggleContainer">
-        <span>Тёмная тема</span>
-        <label class="switch">
-            <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
-            <span class="slider"></span>
-        </label>
-    </div>
+    <div class="container">
+        <div id="themeToggleContainer">
+            <span>Тёмная тема</span>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+                <span class="slider"></span>
+            </label>
+        </div>
 
-    <div id="timerLabel">ГЕССИНГ ЗАКРЫТ УЖЕ</div>
-    <div id="timer"></div>
-    <div class="button-container">
-        <button onclick="setTimerTommy()">А чё там Томми?</button>
-        <button onclick="setTimerGessing()">А чё там Гессинг?</button>
-        <button onclick="setTimerSteve()">А чё там Стив?</button>
+        <div class="timer-card">
+            <div id="timerLabel" class="fixed-height-label">ГЕССИНГ ЗАКРЫТ УЖЕ</div>
+            <div id="timer" class="timer-display"></div>
+            <div class="button-container">
+                <button class="timer-btn" onclick="setTimerTommy()">
+                    А чё там Томми?
+                </button>
+                <button class="timer-btn" onclick="setTimerGessing()">
+                    А чё там Гессинг?
+                </button>
+                <button class="timer-btn" onclick="setTimerSteve()">
+                    А чё там Формула Ху?
+                </button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
