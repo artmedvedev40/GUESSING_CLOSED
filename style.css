@@ -1,11 +1,11 @@
 :root {
     --primary-color: #232323;
     --primary-dark: #000000;
-    --bg-light: #00b2f0;
+    --bg-light: #ffffff;
     --bg-dark: #232323;
     --text-light: #232323;
     --text-dark: #f9fafb;
-    --card-light: #ffffff;
+    --card-light: #f8fafc;
     --card-dark: #2d2d2d;
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     --shadow-dark: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
@@ -25,9 +25,10 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--bg-light);
+    background: linear-gradient(135deg, #00b2f0 0%, #00f58f 100%);
     padding: 20px;
     transition: background-color 0.6s ease;
+    overflow: hidden;
 }
 
 body.dark-theme {
@@ -37,6 +38,8 @@ body.dark-theme {
 .container {
     width: 100%;
     max-width: 600px;
+    z-index: 10;
+    position: relative;
 }
 
 .timer-card {
@@ -47,7 +50,7 @@ body.dark-theme {
     text-align: center;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    min-height: 380px;
+    min-height: 380px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,7 +71,7 @@ body.dark-theme {
 }
 
 #themeToggleContainer {
-    position: absolute;
+    position: fixed;
     top: 25px;
     left: 25px;
     display: flex;
@@ -80,7 +83,7 @@ body.dark-theme {
     backdrop-filter: blur(10px);
     font-size: 0.9em;
     font-weight: 600;
-    z-index: 10;
+    z-index: 100;
     color: var(--text-light);
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.5s ease;
@@ -198,6 +201,7 @@ input:checked + .slider:before {
     gap: 8px;
     box-shadow: 0 4px 12px rgba(35, 35, 35, 0.3);
     transition: all 0.4s ease;
+    min-height: 48px;
 }
 
 .timer-btn:hover {
@@ -210,8 +214,92 @@ input:checked + .slider:before {
     transform: translateY(0);
 }
 
+.saratov-btn {
+    width: 100%;
+    max-width: 492px;
+    min-height: 48px;
+}
+
 .btn-icon {
     font-size: 1.1em;
+}
+
+#fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.firework {
+    position: absolute;
+    border-radius: 50%;
+    animation: explode 2.5s ease-out forwards;
+    filter: blur(1px);
+}
+
+.firework::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: inherit;
+    filter: blur(8px);
+    opacity: 0.7;
+}
+
+.firework::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: inherit;
+    filter: blur(15px);
+    opacity: 0.4;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+.trail {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    animation: trail 1s ease-out forwards;
+}
+
+@keyframes trail {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--trail-tx), var(--trail-ty));
+        opacity: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -221,7 +309,7 @@ input:checked + .slider:before {
     
     .timer-card {
         padding: 2rem 1.5rem;
-        min-height: 360px;
+        min-height: 360px; 
     }
     
     .button-container {
@@ -231,6 +319,10 @@ input:checked + .slider:before {
     
     .timer-btn {
         width: 100%;
+        max-width: 250px;
+    }
+    
+    .saratov-btn {
         max-width: 250px;
     }
     
@@ -248,20 +340,15 @@ input:checked + .slider:before {
     }
     
     #themeToggleContainer {
-        position: relative;
-        top: auto;
-        left: auto;
-        justify-content: center;
-        margin-bottom: 1rem;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
+        position: fixed;
+        top: 15px;
+        left: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .timer-card {
-        min-height: 340px;
+        min-height: 340px; 
         padding: 1.5rem 1rem;
     }
     
@@ -273,5 +360,10 @@ input:checked + .slider:before {
     .fixed-height-label {
         min-height: 45px;
         font-size: 1.1em;
+    }
+    
+    #themeToggleContainer {
+        top: 10px;
+        left: 10px;
     }
 }
