@@ -222,9 +222,9 @@ function createTrail(container, startX, startY, endX, endY, color) {
             if (trail.parentNode) {
                 trail.parentNode.removeChild(trail);
             }
-        }, 1000);
+        }, 1000); //
     }
 }
 
 setInterval(updateTimer, 1000);
-updateTimer();
+updateTimer(); 
