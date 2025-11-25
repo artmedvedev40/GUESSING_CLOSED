@@ -25,7 +25,7 @@ body {
     align-items: center;
     min-height: 100vh;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, #00b2f0 0%, #00f58f 100%);
+    background: #00b2f0;
     padding: 20px;
     transition: background-color 0.6s ease;
     overflow: hidden;
@@ -348,7 +348,7 @@ input:checked + .slider:before {
 
 @media (max-width: 480px) {
     .timer-card {
-        min-height: 340px; 
+        min-height: 340px; /* */
         padding: 1.5rem 1rem;
     }
     
